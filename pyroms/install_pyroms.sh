@@ -1,8 +1,8 @@
 #!/bin/sh
 
-#DESTDIR=/usr/local
-DESTDIR=$HOME/python
-PYROMS_PATH=$DESTDIR/lib/python3.6/site-packages/pyroms
+DESTDIR=/usr/local
+#DESTDIR=$HOME/python
+PYROMS_PATH=$DESTDIR/lib/python3.6/dist-packages/pyroms
 CURDIR=`pwd`
 
 echo

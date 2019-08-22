@@ -546,6 +546,8 @@ def write_ROMS_grid(grd, filename='roms_grd.nc'):
         write_nc_var(grd.vgrid.s_w, 's_w', ('s_w'), 'S-coordinate at W-points')
         write_nc_var(grd.vgrid.Cs_r, 'Cs_r', ('s_rho'), 'S-coordinate stretching curves at RHO-points')
         write_nc_var(grd.vgrid.Cs_w, 'Cs_w', ('s_w'), 'S-coordinate stretching curves at W-points')
+        write_nc_var(grd.vgrid.vtransform, 'Vtransform', (), 'vertical terrain-following transformation equation')
+        write_nc_var(grd.vgrid.vstretching, 'Vstretching', (), 'vertical terrain-following stretching function')
 
     write_nc_var(grd.vgrid.h, 'h', ('eta_rho', 'xi_rho'), 'bathymetry at RHO-points', 'meter')
     #ensure that we have a bath dependancy for hraw

@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 import numpy as np
-import _interp
+from .._interp import xhslice
 import pdb
 
 def sta2z(var, grd, grdz, Cpos='rho', srange=None, \

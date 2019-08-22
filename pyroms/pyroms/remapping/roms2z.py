@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 import numpy as np
-import _interp
+from .._interp import xhslice
 
 def roms2z(var, grd, grdz, Cpos='rho', irange=None, jrange=None, \
            spval=1e37, mode='linear'):
@@ -72,7 +72,7 @@ def roms2z(var, grd, grdz, Cpos='rho', irange=None, jrange=None, \
     varz = np.zeros((nlev, jrange[1]-jrange[0], irange[1]-irange[0]))
 
     for k in range(nlev):
-        varz[k,:,:] = _interp.xhslice(var, \
+        varz[k,:,:] = xhslice(var, \
                         z[:,jrange[0]:jrange[1], irange[0]:irange[1]], \
                         depth[k,jrange[0]:jrange[1], irange[0]:irange[1]], \
                         mask[jrange[0]:jrange[1], irange[0]:irange[1]], \

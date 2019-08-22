@@ -1,12 +1,12 @@
 # encoding: utf-8
 
 import numpy as np
-import _remapping_fast
+import pyroms._remapping_fast
 
 import pyroms
 
 #RD:
-import creep
+# import creep
 
 def flood_fast(varz, grd, pos='t', irange=None, jrange=None, \
           spval=1.2676506e+30, dxy=5, cdepth=0, kk=0):

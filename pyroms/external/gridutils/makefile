@@ -28,9 +28,9 @@ INSTALL_DATA = ${INSTALL} -m 644
 #### End of system configuration section. ####
 
 CC = gcc
-CFLAGS = -I/usr/local/include
-LDFLAGS = -L/usr/local/lib
-CPPFLAGS = -I/usr/local/include
+CFLAGS = -g -O2 -Wall -pedantic
+LDFLAGS = 
+CPPFLAGS = 
 
 AR = ar
 ARFLAGS = cru

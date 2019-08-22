@@ -1,8 +1,9 @@
 # encoding: utf-8
 
 import numpy as np
-import _iso
-import _obs_interp
+from ._iso import zslice as isozslice
+from ._obs_interp import hindices as fhindices
+from ._obs_interp import linterp2d as flinterp2d
 
 import pyroms
 
@@ -121,7 +122,7 @@ def zslice(var, depth, grd, Cpos='rho', vert=False, mode='linear'):
     depth = -abs(depth)
     depth = depth * np.ones(z.shape[1:])
 
-    zslice = _iso.zslice(z, var, depth, imode)
+    zslice = isozslice(z, var, depth, imode)
 
     # mask land
     zslice = np.ma.masked_where(mask == 0, zslice)
@@ -1853,7 +1854,7 @@ def hindices(lon, lat, grd, Cpos='rho', rectangular=0, spval=1e37):
     lon = np.matrix(lon)
     lat = np.matrix(lat)
 
-    ipos, jpos = _obs_interp.hindices(spherical, angle.T, long.T, latg.T, \
+    ipos, jpos = fhindices(spherical, angle.T, long.T, latg.T, \
                                       lon, lat, spval, rectangular)
 
     # python indexing start with zero...
@@ -1876,6 +1877,6 @@ def obs_interp2d(Finp, lon, lat, grd, Cpos='rho', rectangular=0, spval=1e37):
     Iout = Iout + 1
     Jout = Jout + 1
 
-    Fout = _obs_interp.linterp2d(Finp.T,Iout,Jout)
+    Fout = flinterp2d(Finp.T,Iout,Jout)
 
     return Fout

@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 import numpy as np
-import _remapping
+from .._remapping import flood as fflood
 
 def flood2d(varz, grdz, Cpos='rho', irange=None, jrange=None, \
           spval=1e37, dmax=0, cdepth=0, kk=0):
@@ -88,6 +88,6 @@ def flood2d(varz, grdz, Cpos='rho', irange=None, jrange=None, \
         dry[:,0] = idxnan[0]+1
         dry[:,1] = idxnan[1]+1
 
-        varz = _remapping.flood(varz, wet, dry, x, y, dmax)
+        varz = fflood(varz, wet, dry, x, y, dmax)
 
     return varz

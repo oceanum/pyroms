@@ -1,8 +1,8 @@
 # encoding: utf-8
 
 import numpy as np
-import _interp
-import _remapping
+from .._interp import xhslice
+# import _remapping
 
 import pyroms
 

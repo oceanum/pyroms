@@ -10,7 +10,8 @@ from datetime import datetime
 from scipy import interpolate
 
 import pyroms
-import _interp
+from ._interp import get_bottom as fget_bottom
+from ._interp import get_surface as fget_surface
 
 
 def get_lonlat(iindex, jindex, grd, Cpos='rho'):
@@ -341,7 +342,7 @@ def get_bottom(varz, mask, spval=1e37):
 
     bottom = spval * np.ones((jj, ii))
 
-    bottom[:,:] = _interp.get_bottom(varz,mask,spval)
+    bottom[:,:] = fget_bottom(varz,mask,spval)
 
     return bottom
 
@@ -356,7 +357,7 @@ def get_surface(varz, mask, spval=1e37):
 
     surface = spval * np.ones((jj, ii))
 
-    surface[:,:] = _interp.get_surface(varz,mask,spval)
+    surface[:,:] = fget_surface(varz,mask,spval)
 
     return surface
 

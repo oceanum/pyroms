@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 import numpy as np
-import _remapping
+from .._remapping import flood as fflood
 
 import pyroms
 
@@ -108,7 +108,7 @@ def flood(varz, grdz, Cpos='rho', irange=None, jrange=None, \
             dry[:,0] = idxnan[0]+1
             dry[:,1] = idxnan[1]+1
 
-            varz[k,:] = _remapping.flood(varz[k,:], wet, dry, x, y, dmax)
+            varz[k,:] = fflood(varz[k,:], wet, dry, x, y, dmax)
 
     # drop the deepest values down
     idx = np.where(np.isnan(varz) == 1)

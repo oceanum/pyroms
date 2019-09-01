@@ -11,8 +11,8 @@ theta_b = 0.1
 Tcline  = 250
 #
 #
-id      = TINY
-name    = TINY
+id      = tiny
+name    = tiny
 grdfile = /source/onroms/tests/tiny_grd.nc
 N       = 6
 grdtype = roms

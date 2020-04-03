@@ -1,26 +1,27 @@
 #!/bin/sh
 
-DESTDIR=/usr/local
+export DESTDIR=/usr/local
 #DESTDIR=$HOME/python
-PYROMS_PATH=/home/rsoutelino/Envs/roms-tools/lib/python3.6/site-packages/pyroms
-CURDIR=`pwd`
+# PYROMS_PATH=/home/rsoutelino/Envs/roms-tools/lib/python3.6/site-packages/pyroms
+export PYROMS_PATH=$1
+export CURDIR=`pwd`
 
 echo
 echo "installing pyroms..."
 echo
-python setup.py build --fcompiler=gnu95;
-             --prefix=$DESTDIR
+python setup.py build --fcompiler=gnu95 
+python setup.py install 
 echo "installing external libraries..."
 echo "installing gridgen..."
 cd $CURDIR/external/nn
 ./configure --prefix=$DESTDIR
-make install
+make && make install
 cd $CURDIR/external/csa
 ./configure --prefix=$DESTDIR
-make install
+make && make install
 cd $CURDIR/external/gridutils
 ./configure CPPFLAGS=-I$DESTDIR/include LDFLAGS=-L$DESTDIR/lib CFLAGS=-I$DESTDIR/include --prefix=$DESTDIR
-make install
+make && make install
 cd $CURDIR/external/gridgen
 export SHLIBS=-L$DESTDIR/lib
 ./configure CPPFLAGS=-I$DESTDIR/include LDFLAGS=-L$DESTDIR/lib CFLAGS=-I$DESTDIR/include --prefix=$DESTDIR
